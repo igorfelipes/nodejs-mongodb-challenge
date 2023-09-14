@@ -1,0 +1,9093 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Bank": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"code": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"code",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AccountType": {
+				"type": "string",
+				"enum": [
+					"CHECKING",
+					"SAVINGS"
+				]
+			},
+			"BankDetail": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"customerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"documentType": {
+						"type": "string",
+						"nullable": true
+					},
+					"documentNumber": {
+						"type": "string",
+						"nullable": true
+					},
+					"birthday": {
+						"type": "string"
+					},
+					"bankName": {
+						"type": "string"
+					},
+					"bankCode": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"accountType": {
+						"$ref": "#/components/schemas/AccountType"
+					}
+				},
+				"required": [
+					"customerId",
+					"name",
+					"documentType",
+					"documentNumber",
+					"birthday",
+					"bankName",
+					"bankCode",
+					"agency",
+					"accountNumber",
+					"accountType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateBankDetailInput": {
+				"properties": {
+					"accountType": {
+						"$ref": "#/components/schemas/AccountType"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"bankCode": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"accountType",
+					"accountNumber",
+					"agency",
+					"bankCode"
+				],
+				"type": "object"
+			},
+			"Partial_CreateBankDetailInput_": {
+				"properties": {
+					"bankCode": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"accountType": {
+						"$ref": "#/components/schemas/AccountType"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"CreditBlocks": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"commissionPercentage": {
+						"type": "number",
+						"format": "double"
+					},
+					"creditValues": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"lotteryId",
+					"commissionPercentage",
+					"creditValues"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Boolean": {
+				"properties": {},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DocumentType": {
+				"type": "string",
+				"enum": [
+					"CPF",
+					"CNPJ"
+				],
+				"description": "Enums"
+			},
+			"Record_string.unknown_": {
+				"properties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"Customer": {
+				"properties": {
+					"customerProviderData": {
+						"properties": {
+							"data": {
+								"$ref": "#/components/schemas/Record_string.unknown_"
+							},
+							"providerCustomerId": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"data",
+							"providerCustomerId"
+						],
+						"type": "object"
+					},
+					"user": {
+						"properties": {
+							"lottery": {
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"id": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"name",
+									"id"
+								],
+								"type": "object"
+							},
+							"phone": {
+								"type": "string"
+							},
+							"zipcode": {
+								"type": "string"
+							},
+							"uf": {
+								"type": "string"
+							},
+							"city": {
+								"type": "string"
+							},
+							"addressComplement": {
+								"type": "string"
+							},
+							"address": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"documentType": {
+								"$ref": "#/components/schemas/DocumentType"
+							},
+							"documentNumber": {
+								"type": "string"
+							},
+							"email": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"lottery",
+							"phone",
+							"zipcode",
+							"uf",
+							"city",
+							"address",
+							"name",
+							"documentType",
+							"documentNumber",
+							"email"
+						],
+						"type": "object"
+					},
+					"birthday": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"customerProviderData",
+					"user",
+					"birthday",
+					"userId",
+					"id"
+				],
+				"type": "object"
+			},
+			"Record_string.any_": {
+				"properties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"LoadAllCustomersResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"customers": {
+						"items": {
+							"$ref": "#/components/schemas/Customer"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"customers"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CustomerSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CustomerLoadByParams": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"userId": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"documentNumber": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"User": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"documentNumber": {
+						"type": "string"
+					},
+					"documentType": {
+						"$ref": "#/components/schemas/DocumentType"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					},
+					"role": {},
+					"shop": {},
+					"lottery": {}
+				},
+				"required": [
+					"name",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SignupCustomerResponse": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
+					},
+					"customer": {
+						"$ref": "#/components/schemas/Customer"
+					}
+				},
+				"required": [
+					"token",
+					"user",
+					"customer"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserCustomerCreateTest": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"birthday": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userAgent": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"email",
+					"password",
+					"birthday",
+					"userAgent"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateCustomerData": {
+				"properties": {
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"birthday": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"email": {
+						"type": "string"
+					},
+					"documentType": {
+						"$ref": "#/components/schemas/DocumentType"
+					},
+					"documentNumber": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"uf",
+					"city",
+					"number",
+					"neighborhood",
+					"address",
+					"zipcode",
+					"birthday",
+					"email",
+					"documentType",
+					"documentNumber",
+					"name"
+				],
+				"type": "object"
+			},
+			"TransactionType": {
+				"type": "string",
+				"enum": [
+					"IN",
+					"OUT"
+				]
+			},
+			"CustomerCreditTransaction": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"idFinancialTransaction": {
+						"type": "number",
+						"format": "double"
+					},
+					"type": {
+						"$ref": "#/components/schemas/TransactionType"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentBalance": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"idCustomer",
+					"type",
+					"amount",
+					"currentBalance"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginationMeta": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"meta"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllCustomerCreditTransactionsOutput": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/CustomerCreditTransaction"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"LoadAllShopFinancialTransactionsQueryParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"period": {
+						"type": "string",
+						"enum": [
+							"today",
+							"lastWeek",
+							"lastMonth"
+						]
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CustomerRestrictions": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"suspendedUntil": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"dailyBetLimit": {
+						"type": "number",
+						"format": "double"
+					},
+					"betLimitBlockedUntil": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"betLimitUpdatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"suspensionUpdatedAt": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"idCustomer"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Pick_CustomerRestrictions.Exclude_keyofCustomerRestrictions.-or-id-or-createdAt-or-idCustomer-or-betLimitBlockedUntil-or-suspensionUpdatedAt-or-betLimitUpdatedAt__": {
+				"properties": {
+					"suspendedUntil": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"dailyBetLimit": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"description": "From T, pick a set of properties whose keys are in the union K"
+			},
+			"Omit_CustomerRestrictions.-or-id-or-createdAt-or-idCustomer-or-betLimitBlockedUntil-or-suspensionUpdatedAt-or-betLimitUpdatedAt_": {
+				"$ref": "#/components/schemas/Pick_CustomerRestrictions.Exclude_keyofCustomerRestrictions.-or-id-or-createdAt-or-idCustomer-or-betLimitBlockedUntil-or-suspensionUpdatedAt-or-betLimitUpdatedAt__",
+				"description": "Construct a type with the properties of T except for those in type K."
+			},
+			"CreateCustomerRestrictionsInput": {
+				"$ref": "#/components/schemas/Omit_CustomerRestrictions.-or-id-or-createdAt-or-idCustomer-or-betLimitBlockedUntil-or-suspensionUpdatedAt-or-betLimitUpdatedAt_"
+			},
+			"UpdateCustomerRestrictionsInput": {
+				"$ref": "#/components/schemas/Omit_CustomerRestrictions.-or-id-or-createdAt-or-idCustomer-or-betLimitBlockedUntil-or-suspensionUpdatedAt-or-betLimitUpdatedAt_"
+			},
+			"LoadAllPaymentMethodsOutput": {
+				"items": {
+					"$ref": "#/components/schemas/Record_string.any_"
+				},
+				"type": "array"
+			},
+			"FinancialTransaction": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"idProvider": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"billingData": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"status": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"idCustomer",
+					"paidValue",
+					"amount",
+					"billingData",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateCreditTransactionInput": {
+				"properties": {
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"token": {
+						"type": "string"
+					},
+					"customerPaymentMethodId": {
+						"type": "string"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"idCustomer",
+					"amount"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FinancialTransactionGenericOutput": {
+				"properties": {
+					"financialTransaction": {
+						"$ref": "#/components/schemas/FinancialTransaction"
+					},
+					"currentBalance": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"financialTransaction",
+					"currentBalance"
+				],
+				"type": "object"
+			},
+			"CreateTicketResponse": {
+				"properties": {
+					"paidAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"numbers": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"idPrizeDraw": {
+						"type": "number",
+						"format": "double"
+					},
+					"idShop": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"numbers",
+					"idCustomer",
+					"idPrizeDraw",
+					"paidValue"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateCheckoutFinancialTransactionOutput": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/FinancialTransactionGenericOutput"
+					},
+					{
+						"properties": {
+							"ticket": {
+								"$ref": "#/components/schemas/CreateTicketResponse"
+							}
+						},
+						"required": [
+							"ticket"
+						],
+						"type": "object"
+					}
+				]
+			},
+			"CreateCheckoutTransactionInput": {
+				"properties": {
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"token": {
+						"type": "string"
+					},
+					"customerPaymentMethodId": {
+						"type": "string"
+					},
+					"ticket": {
+						"properties": {
+							"numbers": {
+								"items": {
+									"type": "number",
+									"format": "double"
+								},
+								"type": "array"
+							},
+							"idPrizeDraw": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"numbers",
+							"idPrizeDraw"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"idCustomer",
+					"amount",
+					"paidValue",
+					"ticket"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateFinancialTransactionPaymentMethodOutput": {
+				"$ref": "#/components/schemas/Record_string.any_"
+			},
+			"CreateFinancialTransactionPaymentMethodInput": {
+				"properties": {
+					"setAsDefault": {
+						"type": "boolean"
+					},
+					"token": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"token",
+					"description",
+					"idCustomer"
+				],
+				"type": "object"
+			},
+			"ForgotPasswordCreate": {
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"type": "object"
+			},
+			"ForgotPasswordUpdate": {
+				"properties": {
+					"newPassword": {
+						"type": "string"
+					},
+					"token": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"newPassword",
+					"token",
+					"email"
+				],
+				"type": "object"
+			},
+			"PrizeType": {
+				"type": "string",
+				"enum": [
+					"PERCENT_FIXED",
+					"MULTIPLE"
+				]
+			},
+			"NoPrizePolicy": {
+				"type": "string",
+				"enum": [
+					"NOTHING",
+					"NEXT_DRAW",
+					"SHARE_BELOW"
+				]
+			},
+			"Partial_Lottery_": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"manager": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"obs": {
+						"type": "string"
+					},
+					"bank": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"users": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"shops": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"creditBlocks": {
+						"$ref": "#/components/schemas/CreditBlocks"
+					},
+					"_count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"Game": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"version": {
+						"type": "number",
+						"format": "double"
+					},
+					"buyLimit": {
+						"type": "number",
+						"format": "double"
+					},
+					"drawQuantity": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdBy": {
+						"type": "string"
+					},
+					"prizePool": {
+						"type": "number",
+						"format": "double"
+					},
+					"rangeNumberStart": {
+						"type": "number",
+						"format": "double"
+					},
+					"rangeNumberEnd": {
+						"type": "number",
+						"format": "double"
+					},
+					"prizeType": {
+						"$ref": "#/components/schemas/PrizeType"
+					},
+					"prizeDrawPool": {
+						"type": "number",
+						"format": "double"
+					},
+					"minPrizePool": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxOccurrence": {
+						"type": "number",
+						"format": "double"
+					},
+					"noPrizePolicy": {
+						"$ref": "#/components/schemas/NoPrizePolicy"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lottery": {
+						"$ref": "#/components/schemas/Partial_Lottery_"
+					},
+					"gamePrices": {
+						"items": {
+							"$ref": "#/components/schemas/GamePrice"
+						},
+						"type": "array"
+					},
+					"gamePrizes": {
+						"items": {
+							"$ref": "#/components/schemas/GamePrize"
+						},
+						"type": "array"
+					},
+					"gameRecurrences": {
+						"items": {
+							"$ref": "#/components/schemas/GameRecurrence"
+						},
+						"type": "array"
+					},
+					"gameSharings": {
+						"items": {
+							"$ref": "#/components/schemas/GameSharing"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"name",
+					"description",
+					"version",
+					"buyLimit",
+					"drawQuantity",
+					"createdBy",
+					"prizePool",
+					"rangeNumberStart",
+					"rangeNumberEnd",
+					"prizeType",
+					"maxOccurrence",
+					"noPrizePolicy",
+					"isActive",
+					"lotteryId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GamePrice": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "number",
+						"format": "double"
+					},
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxPrice": {
+						"type": "number",
+						"format": "double"
+					},
+					"game": {
+						"$ref": "#/components/schemas/Game"
+					}
+				},
+				"required": [
+					"idGame",
+					"number",
+					"price",
+					"maxPrice"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GamePrizeType": {
+				"type": "string",
+				"enum": [
+					"MULTIPLE",
+					"PERCENT",
+					"FIXED"
+				]
+			},
+			"GamePrize": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "number",
+						"format": "double"
+					},
+					"prizeType": {
+						"$ref": "#/components/schemas/GamePrizeType"
+					},
+					"prize": {
+						"type": "number",
+						"format": "double"
+					},
+					"game": {
+						"$ref": "#/components/schemas/Game"
+					}
+				},
+				"required": [
+					"idGame",
+					"number",
+					"prizeType",
+					"prize"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RecurrencyType": {
+				"type": "string",
+				"enum": [
+					"DAY_OF_WEEK",
+					"DAY_OF_MONTH",
+					"DAY_OF_YEAR",
+					"DYNAMIC_DAY_OF_WEEK"
+				]
+			},
+			"GameRecurrence": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"recurrenceType": {
+						"$ref": "#/components/schemas/RecurrencyType"
+					},
+					"day": {
+						"type": "number",
+						"format": "double"
+					},
+					"hour": {
+						"type": "string"
+					},
+					"dynamicSequence": {
+						"type": "number",
+						"format": "double"
+					},
+					"game": {
+						"$ref": "#/components/schemas/Game"
+					}
+				},
+				"required": [
+					"idGame",
+					"recurrenceType",
+					"day",
+					"hour"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GameSharingRule": {
+				"type": "string",
+				"enum": [
+					"NEXT_DRAW",
+					"ANOTHER_GAME"
+				]
+			},
+			"GameSharing": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"quantity": {
+						"type": "number",
+						"format": "double"
+					},
+					"description": {
+						"type": "string"
+					},
+					"rule": {
+						"$ref": "#/components/schemas/GameSharingRule"
+					},
+					"idToPrizeDraw": {
+						"type": "number",
+						"format": "double"
+					},
+					"game": {
+						"$ref": "#/components/schemas/Game"
+					}
+				},
+				"required": [
+					"idGame",
+					"quantity",
+					"description",
+					"rule"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllGameResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"games": {
+						"items": {
+							"$ref": "#/components/schemas/Game"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"games"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GameSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"createdBy": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"lotteryId": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"prizeType": {
+						"$ref": "#/components/schemas/PrizeType"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadNextGameDatesResponse": {
+				"properties": {
+					"dates": {
+						"items": {
+							"type": "string",
+							"format": "date-time"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"dates"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadNextGameDatesInput": {
+				"properties": {
+					"gameId": {
+						"type": "number",
+						"format": "double"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"gameId",
+					"amount"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateGameResponse": {
+				"properties": {
+					"game": {
+						"$ref": "#/components/schemas/Game"
+					},
+					"prizeDraw": {}
+				},
+				"required": [
+					"game",
+					"prizeDraw"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllGamePriceResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"prices": {
+						"items": {
+							"$ref": "#/components/schemas/GamePrice"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"prices"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GamePriceSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllGamePrizeResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"prizes": {
+						"items": {
+							"$ref": "#/components/schemas/GamePrize"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"prizes"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GamePrizeSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateGamePrizeResponse": {
+				"properties": {
+					"prize": {
+						"$ref": "#/components/schemas/GamePrize"
+					}
+				},
+				"required": [
+					"prize"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllGameRecurrenceResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"recurrences": {
+						"items": {
+							"$ref": "#/components/schemas/GameRecurrence"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"recurrences"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GameRecurrenceSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateGameRecurrenceResponse": {
+				"properties": {
+					"recurrence": {
+						"$ref": "#/components/schemas/GameRecurrence"
+					}
+				},
+				"required": [
+					"recurrence"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllGameSharingResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"gameSharings": {
+						"items": {
+							"$ref": "#/components/schemas/GameSharing"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"gameSharings"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GameSharingSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateGameSharingResponse": {
+				"properties": {
+					"gameSharing": {
+						"$ref": "#/components/schemas/GameSharing"
+					}
+				},
+				"required": [
+					"gameSharing"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LotteryResponse": {
+				"properties": {
+					"_count": {
+						"type": "number",
+						"format": "double"
+					},
+					"shops": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"users": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"partner": {
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"name",
+							"id"
+						],
+						"type": "object"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"bank": {
+						"type": "string"
+					},
+					"obs": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"partnerId",
+					"cnpj",
+					"uf",
+					"zipcode",
+					"city",
+					"number",
+					"neighborhood",
+					"address",
+					"isActive",
+					"createdAt",
+					"name"
+				],
+				"type": "object"
+			},
+			"LoadAllLotteryResponse": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/LotteryResponse"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"LotterySearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "number",
+						"enum": [
+							15,
+							30,
+							60
+						]
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LotteryCreate": {
+				"properties": {
+					"creditBlocks": {
+						"$ref": "#/components/schemas/CreditBlocks"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"bank": {
+						"type": "string"
+					},
+					"obs": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"manager": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"cnpj",
+					"uf",
+					"zipcode",
+					"city",
+					"number",
+					"neighborhood",
+					"address",
+					"name",
+					"partnerId",
+					"manager",
+					"email"
+				],
+				"type": "object"
+			},
+			"Partial_LotteryCreate_": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"manager": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"obs": {
+						"type": "string"
+					},
+					"bank": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"creditBlocks": {
+						"$ref": "#/components/schemas/CreditBlocks"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"PartnerResponse": {
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"isActive",
+					"phone",
+					"uf",
+					"city",
+					"email",
+					"zipcode",
+					"number",
+					"neighborhood",
+					"address",
+					"cnpj",
+					"name"
+				],
+				"type": "object"
+			},
+			"LoadAllPartnerResponse": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/PartnerResponse"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"PartnerSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PartnerCreate": {
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"isActive",
+					"phone",
+					"uf",
+					"city",
+					"email",
+					"zipcode",
+					"number",
+					"neighborhood",
+					"address",
+					"cnpj",
+					"name"
+				],
+				"type": "object"
+			},
+			"Partial_PartnerCreate_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"PermissionResponse": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object"
+			},
+			"PermissionSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PermissionCreate": {
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object"
+			},
+			"Partial_PermissionCreate_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"SourceType": {
+				"type": "string",
+				"enum": [
+					"INTERNAL",
+					"CEF"
+				]
+			},
+			"PrizeDraw": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"gameVersion": {
+						"type": "number",
+						"format": "double"
+					},
+					"sequence": {
+						"type": "number",
+						"format": "double"
+					},
+					"dueDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"revenue": {
+						"type": "number",
+						"format": "double"
+					},
+					"source": {
+						"$ref": "#/components/schemas/SourceType"
+					},
+					"game": {
+						"$ref": "#/components/schemas/Game"
+					},
+					"prizeWinners": {
+						"items": {
+							"properties": {
+								"winners": {
+									"items": {
+										"properties": {
+											"customer": {
+												"properties": {
+													"lottery": {
+														"properties": {
+															"name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name"
+														],
+														"type": "object"
+													},
+													"email": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"lottery",
+													"email",
+													"name"
+												],
+												"type": "object"
+											},
+											"paidAt": {
+												"type": "string",
+												"format": "date-time"
+											}
+										},
+										"required": [
+											"customer",
+											"paidAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"prize": {
+									"type": "number",
+									"format": "double"
+								},
+								"drawNumbers": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"winners",
+								"prize",
+								"drawNumbers"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"_count": {
+						"properties": {
+							"tickets": {
+								"type": "number",
+								"format": "double"
+							},
+							"prizeWinners": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"tickets",
+							"prizeWinners"
+						],
+						"type": "object"
+					},
+					"prizeDrawNumbers": {
+						"properties": {
+							"numbers": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"numbers",
+							"id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"createdAt",
+					"idGame",
+					"gameVersion",
+					"sequence",
+					"dueDate",
+					"source",
+					"game"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllPrizeDrawsResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"prizeDraws": {
+						"items": {
+							"$ref": "#/components/schemas/PrizeDraw"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"prizeDraws"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllPrizeDrawsQueryParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"gameVersion": {
+						"type": "number",
+						"format": "double"
+					},
+					"dueDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"orderBy": {
+						"type": "string",
+						"enum": [
+							"asc",
+							"desc"
+						]
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"wasDraw",
+							"notDraw"
+						]
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PrizeDrawResults": {
+				"properties": {
+					"winners": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalTickets": {
+						"type": "number",
+						"format": "double"
+					},
+					"game": {
+						"properties": {
+							"prizeType": {
+								"$ref": "#/components/schemas/PrizeType"
+							},
+							"prizePool": {
+								"type": "number",
+								"format": "double"
+							},
+							"minPrizePool": {
+								"type": "number",
+								"format": "double"
+							},
+							"name": {
+								"type": "string"
+							},
+							"lotteryId": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"prizeType",
+							"prizePool",
+							"minPrizePool",
+							"name",
+							"lotteryId"
+						],
+						"type": "object"
+					},
+					"prizeDrawNumbers": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"sequence": {
+						"type": "number",
+						"format": "double"
+					},
+					"dueDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"gameVersion": {
+						"type": "number",
+						"format": "double"
+					},
+					"revenue": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"winners",
+					"totalTickets",
+					"game",
+					"prizeDrawNumbers",
+					"sequence",
+					"dueDate",
+					"gameVersion",
+					"revenue",
+					"id"
+				],
+				"type": "object"
+			},
+			"PrizeDrawResultsResponse": {
+				"allOf": [
+					{
+						"properties": {
+							"prizeDraws": {
+								"items": {
+									"$ref": "#/components/schemas/PrizeDrawResults"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"prizeDraws"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"LoadPrizeDrawResultsQueryParams": {
+				"properties": {
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"gameVersion": {
+						"type": "number",
+						"format": "double"
+					},
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"period": {
+						"type": "string",
+						"enum": [
+							"today",
+							"lastWeek",
+							"lastMonth"
+						]
+					}
+				},
+				"required": [
+					"idGame",
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PrizeDrawNext": {
+				"properties": {
+					"_count": {
+						"properties": {
+							"tickets": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"tickets"
+						],
+						"type": "object"
+					},
+					"game": {
+						"properties": {
+							"gamePrizes": {
+								"items": {
+									"$ref": "#/components/schemas/GamePrize"
+								},
+								"type": "array"
+							},
+							"drawQuantity": {
+								"type": "number",
+								"format": "double"
+							},
+							"buyLimit": {
+								"type": "number",
+								"format": "double"
+							},
+							"minPrizePool": {
+								"type": "number",
+								"format": "double"
+							},
+							"prizeType": {
+								"$ref": "#/components/schemas/PrizeType"
+							},
+							"lotteryId": {
+								"type": "number",
+								"format": "double"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"gamePrizes",
+							"drawQuantity",
+							"buyLimit",
+							"minPrizePool",
+							"prizeType",
+							"lotteryId",
+							"name"
+						],
+						"type": "object"
+					},
+					"revenue": {
+						"type": "number",
+						"format": "double"
+					},
+					"sequence": {
+						"type": "number",
+						"format": "double"
+					},
+					"dueDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"gameVersion": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"_count",
+					"game",
+					"revenue",
+					"sequence",
+					"dueDate",
+					"gameVersion",
+					"id"
+				],
+				"type": "object"
+			},
+			"PrizeDrawNextResponse": {
+				"allOf": [
+					{
+						"properties": {
+							"prizeDraws": {
+								"items": {
+									"$ref": "#/components/schemas/PrizeDrawNext"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"prizeDraws"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"LoadNextPrizeDrawsQueryParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"prizeType": {
+						"$ref": "#/components/schemas/PrizeType"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PrizeDrawUpdate": {
+				"properties": {
+					"source": {
+						"$ref": "#/components/schemas/SourceType"
+					}
+				},
+				"required": [
+					"source"
+				],
+				"type": "object"
+			},
+			"PrizeDrawNumberCreate": {
+				"properties": {
+					"numbers": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"idPrizeDraw": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"numbers",
+					"idPrizeDraw"
+				],
+				"type": "object"
+			},
+			"RoleResponse": {
+				"properties": {
+					"_count": {
+						"type": "number",
+						"format": "double"
+					},
+					"permissions": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object"
+			},
+			"RoleSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RoleCreate": {
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object"
+			},
+			"Partial_RoleCreate_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"RolePermissionResponse": {
+				"properties": {
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"permissionId": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"roleId",
+					"permissionId"
+				],
+				"type": "object"
+			},
+			"RolePermissionSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"permissionId": {
+						"type": "number",
+						"format": "double"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RolePermissionAdd": {
+				"properties": {
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"permissionId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"roleId",
+					"permissionId"
+				],
+				"type": "object"
+			},
+			"UserResponse": {
+				"properties": {
+					"customer": {
+						"$ref": "#/components/schemas/Customer"
+					},
+					"role": {
+						"properties": {
+							"permissions": {
+								"items": {
+									"properties": {
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"permissions",
+							"name"
+						],
+						"type": "object",
+						"nullable": true
+					},
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"name"
+				],
+				"type": "object"
+			},
+			"SessionResponse": {
+				"properties": {
+					"user": {
+						"$ref": "#/components/schemas/UserResponse"
+					},
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"user",
+					"token"
+				],
+				"type": "object"
+			},
+			"SessionCreate": {
+				"properties": {
+					"password": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"password",
+					"email"
+				],
+				"type": "object"
+			},
+			"ShopResponse": {
+				"properties": {
+					"_count": {
+						"type": "number",
+						"format": "double"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"number",
+					"phone",
+					"email",
+					"uf",
+					"city",
+					"zipcode",
+					"neighborhood",
+					"address",
+					"cnpj",
+					"name"
+				],
+				"type": "object"
+			},
+			"LoadAllShopResponse": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/ShopResponse"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"ShopSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ShopCreate": {
+				"properties": {
+					"isActive": {
+						"type": "boolean"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"isActive",
+					"lotteryId",
+					"number",
+					"phone",
+					"email",
+					"uf",
+					"city",
+					"zipcode",
+					"neighborhood",
+					"address",
+					"cnpj",
+					"name"
+				],
+				"type": "object"
+			},
+			"Partial_ShopCreate_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"ShopCreditTransaction": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"idShop": {
+						"type": "number",
+						"format": "double"
+					},
+					"idFinancialTransaction": {
+						"type": "number",
+						"format": "double"
+					},
+					"type": {
+						"$ref": "#/components/schemas/TransactionType"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentBalance": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"idShop",
+					"type",
+					"amount",
+					"currentBalance"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllShopCreditTransactionsOutput": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/ShopCreditTransaction"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"LoadAllShopCreditTransactionsQueryParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"period": {
+						"type": "string",
+						"enum": [
+							"today",
+							"lastWeek",
+							"lastMonth"
+						]
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ShopFinancialTransaction": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"idShop": {
+						"type": "number",
+						"format": "double"
+					},
+					"idProvider": {
+						"type": "number",
+						"format": "double"
+					},
+					"idcreditblocks": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					},
+					"billingData": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"status": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"idShop",
+					"paidValue",
+					"amount",
+					"billingData",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllShopFinancialTransactionsOutput": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/ShopFinancialTransaction"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"LoadAllShopPaymentMethodsOutput": {
+				"items": {
+					"$ref": "#/components/schemas/Record_string.any_"
+				},
+				"type": "array"
+			},
+			"CreateShopFinancialTransactionInput": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"customerPaymentMethodId": {
+						"type": "string"
+					},
+					"idCreditBlocks": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"amount": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"paidValue",
+					"amount"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateShopPaymentMethodOutput": {
+				"$ref": "#/components/schemas/Record_string.any_"
+			},
+			"CreateShopPaymentMethodInput": {
+				"properties": {
+					"setAsDefault": {
+						"type": "boolean"
+					},
+					"token": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token",
+					"description"
+				],
+				"type": "object"
+			},
+			"Ticket": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"idPrizeDraw": {
+						"type": "number",
+						"format": "double"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"code": {
+						"type": "string"
+					},
+					"paidAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"game": {
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					},
+					"lottery": {
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"idPrizeDraw",
+					"idCustomer",
+					"paidValue"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllTicketsResponse": {
+				"properties": {
+					"meta": {
+						"properties": {
+							"totalItems": {
+								"type": "number",
+								"format": "double"
+							},
+							"search": {
+								"$ref": "#/components/schemas/Record_string.any_"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							},
+							"page": {
+								"type": "number",
+								"format": "double"
+							},
+							"totalPages": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"search",
+							"limit",
+							"page"
+						],
+						"type": "object"
+					},
+					"tickets": {
+						"items": {
+							"$ref": "#/components/schemas/Ticket"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"tickets"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PeriodEnum": {
+				"enum": [
+					"today",
+					"lastWeek",
+					"lastMonth"
+				],
+				"type": "string"
+			},
+			"LoadAllTicketsSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"period": {
+						"$ref": "#/components/schemas/PeriodEnum"
+					},
+					"isWinner": {
+						"type": "string",
+						"enum": [
+							"TRUE",
+							"FALSE"
+						]
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TicketStatus": {
+				"enum": [
+					"PENDING_DRAW",
+					"NOT_WINNER",
+					"WINNER"
+				],
+				"type": "string"
+			},
+			"MyTicketsList": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"code": {
+						"type": "string",
+						"nullable": true
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"status": {
+						"$ref": "#/components/schemas/TicketStatus"
+					},
+					"numbers": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"gameName": {
+						"type": "string"
+					},
+					"dueDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"lotteryName": {
+						"type": "string"
+					},
+					"partnerName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"code",
+					"createdAt",
+					"status",
+					"numbers",
+					"gameName",
+					"dueDate",
+					"lotteryName",
+					"partnerName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TicketStatusFilter": {
+				"enum": [
+					"upcoming",
+					"past"
+				],
+				"type": "string"
+			},
+			"LoadMyTicketsSearchParams": {
+				"properties": {
+					"isPrizeWinner": {
+						"type": "string",
+						"enum": [
+							"TRUE",
+							"FALSE"
+						]
+					},
+					"status": {
+						"$ref": "#/components/schemas/TicketStatusFilter"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_User_": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"documentNumber": {
+						"type": "string"
+					},
+					"documentType": {
+						"$ref": "#/components/schemas/DocumentType"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					},
+					"role": {},
+					"shop": {},
+					"lottery": {}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"LoadTicketBydIdResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"code": {
+						"type": "string",
+						"nullable": true
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"status": {
+						"$ref": "#/components/schemas/TicketStatus"
+					},
+					"idPrizeDraw": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"ticketNumbers": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"customer": {
+						"properties": {
+							"user": {
+								"$ref": "#/components/schemas/Partial_User_"
+							},
+							"birthday": {
+								"type": "string",
+								"format": "date-time"
+							}
+						},
+						"required": [
+							"user",
+							"birthday"
+						],
+						"type": "object"
+					},
+					"prizeWinners": {
+						"properties": {
+							"paidAt": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"drawnNumbers": {
+								"type": "number",
+								"format": "double"
+							},
+							"prize": {
+								"type": "number",
+								"format": "double"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"paidAt",
+							"drawnNumbers",
+							"prize",
+							"id"
+						],
+						"type": "object"
+					},
+					"prizeDraw": {
+						"properties": {
+							"game": {
+								"properties": {
+									"lottery": {
+										"properties": {
+											"partner": {
+												"properties": {
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"partner",
+											"name"
+										],
+										"type": "object"
+									},
+									"buyLimit": {
+										"type": "number",
+										"format": "double"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"lottery",
+									"buyLimit",
+									"name"
+								],
+								"type": "object"
+							},
+							"prizeDrawNumbers": {
+								"properties": {
+									"numbers": {
+										"items": {
+											"type": "number",
+											"format": "double"
+										},
+										"type": "array",
+										"nullable": true
+									}
+								},
+								"type": "object"
+							},
+							"dueDate": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"sequence": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"game",
+							"prizeDrawNumbers",
+							"dueDate",
+							"sequence"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"id",
+					"code",
+					"createdAt",
+					"status",
+					"idPrizeDraw",
+					"paidAt",
+					"paidValue",
+					"idCustomer",
+					"ticketNumbers",
+					"customer",
+					"prizeDraw"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateTicketInput": {
+				"properties": {
+					"paidAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"numbers": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"idCustomer": {
+						"type": "number",
+						"format": "double"
+					},
+					"idPrizeDraw": {
+						"type": "number",
+						"format": "double"
+					},
+					"idShop": {
+						"type": "number",
+						"format": "double"
+					},
+					"paidValue": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"numbers",
+					"idCustomer",
+					"idPrizeDraw",
+					"paidValue"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UploadFile": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"originalFilename": {
+						"type": "string"
+					},
+					"fileName": {
+						"type": "string"
+					},
+					"filePath": {
+						"type": "string"
+					},
+					"fileUri": {
+						"type": "string"
+					},
+					"mimeType": {
+						"type": "string"
+					},
+					"size": {
+						"type": "number",
+						"format": "double"
+					},
+					"idGame": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"fileName",
+					"filePath",
+					"fileUri",
+					"mimeType",
+					"size"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"File": {
+				"description": "Object containing file metadata and access information.",
+				"properties": {
+					"fieldname": {
+						"type": "string",
+						"description": "Name of the form field associated with this file."
+					},
+					"originalname": {
+						"type": "string",
+						"description": "Name of the file on the uploader's computer."
+					},
+					"encoding": {
+						"type": "string",
+						"description": "Value of the `Content-Transfer-Encoding` header for this file.",
+						"deprecated": true
+					},
+					"mimetype": {
+						"type": "string",
+						"description": "Value of the `Content-Type` header for this file."
+					},
+					"size": {
+						"type": "number",
+						"format": "double",
+						"description": "Size of the file in bytes."
+					},
+					"stream": {
+						"type": "string",
+						"format": "byte",
+						"description": "A readable stream of this file. Only available to the `_handleFile`\ncallback for custom `StorageEngine`s."
+					},
+					"destination": {
+						"type": "string",
+						"description": "`DiskStorage` only: Directory to which this file has been uploaded."
+					},
+					"filename": {
+						"type": "string",
+						"description": "`DiskStorage` only: Name of this file within `destination`."
+					},
+					"path": {
+						"type": "string",
+						"description": "`DiskStorage` only: Full path to the uploaded file."
+					},
+					"buffer": {
+						"type": "string",
+						"format": "byte",
+						"description": "`MemoryStorage` only: A Buffer containing the entire file."
+					}
+				},
+				"required": [
+					"fieldname",
+					"originalname",
+					"encoding",
+					"mimetype",
+					"size",
+					"stream",
+					"destination",
+					"filename",
+					"path",
+					"buffer"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadAllUserResponse": {
+				"allOf": [
+					{
+						"properties": {
+							"data": {
+								"items": {
+									"$ref": "#/components/schemas/UserResponse"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"data"
+						],
+						"type": "object"
+					},
+					{
+						"$ref": "#/components/schemas/PaginationMeta"
+					}
+				]
+			},
+			"UserSearchParams": {
+				"properties": {
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"limit",
+					"page"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Shop": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"logoUrl": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"_count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"name",
+					"cnpj",
+					"address",
+					"neighborhood",
+					"zipcode",
+					"city",
+					"uf",
+					"email",
+					"number",
+					"phone",
+					"isActive",
+					"lotteryId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partner": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"cnpj",
+					"address",
+					"neighborhood",
+					"number",
+					"zipcode",
+					"email",
+					"city",
+					"uf",
+					"phone",
+					"isActive"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Lottery": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"manager": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"obs": {
+						"type": "string"
+					},
+					"bank": {
+						"type": "string"
+					},
+					"agency": {
+						"type": "string"
+					},
+					"accountNumber": {
+						"type": "string"
+					},
+					"cnpj": {
+						"type": "string"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"users": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"shops": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					},
+					"creditBlocks": {
+						"$ref": "#/components/schemas/CreditBlocks"
+					},
+					"_count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"name",
+					"manager",
+					"email",
+					"address",
+					"createdAt",
+					"isActive",
+					"neighborhood",
+					"number",
+					"city",
+					"zipcode",
+					"uf",
+					"cnpj",
+					"partnerId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoadUserByIdResponse": {
+				"properties": {
+					"customer": {
+						"properties": {
+							"currentBalance": {
+								"type": "number",
+								"format": "double"
+							},
+							"birthday": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"currentBalance",
+							"birthday",
+							"id"
+						],
+						"type": "object"
+					},
+					"lottery": {
+						"$ref": "#/components/schemas/Lottery"
+					},
+					"partner": {
+						"$ref": "#/components/schemas/Partner"
+					},
+					"shop": {
+						"$ref": "#/components/schemas/Shop"
+					},
+					"role": {
+						"properties": {
+							"permissions": {
+								"items": {
+									"properties": {
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"permissions",
+							"name"
+						],
+						"type": "object",
+						"nullable": true
+					},
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"number": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"documentType": {
+						"$ref": "#/components/schemas/DocumentType"
+					},
+					"documentNumber": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"customer",
+					"email",
+					"name"
+				],
+				"type": "object"
+			},
+			"UserCreate": {
+				"properties": {
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"documentType": {
+						"$ref": "#/components/schemas/DocumentType"
+					},
+					"documentNumber": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"password",
+					"email",
+					"name"
+				],
+				"type": "object"
+			},
+			"Partial_UserCreate_": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"documentNumber": {
+						"type": "string"
+					},
+					"documentType": {
+						"$ref": "#/components/schemas/DocumentType"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"neighborhood": {
+						"type": "string"
+					},
+					"addressComplement": {
+						"type": "string"
+					},
+					"number": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"uf": {
+						"type": "string"
+					},
+					"roleId": {
+						"type": "number",
+						"format": "double"
+					},
+					"partnerId": {
+						"type": "number",
+						"format": "double"
+					},
+					"lotteryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"shopId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"UserPassword": {
+				"properties": {
+					"oldPassword": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"oldPassword",
+					"password"
+				],
+				"type": "object"
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"name": "authorization",
+				"in": "headers",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	},
+	"info": {
+		"title": "laas-backend",
+		"version": "0.1.0",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "Guilherme Marroquio ",
+			"email": "guilherme@bitos.co"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/bank": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Bank"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Bank"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/bank-detail": {
+			"get": {
+				"operationId": "Load",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/BankDetail"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"BankDetail"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BankDetail"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"BankDetail"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateBankDetailInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/bank-detail/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BankDetail"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"BankDetail"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_CreateBankDetailInput_"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/credit-blocks": {
+			"get": {
+				"operationId": "Load",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreditBlocks"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CreditBlocks"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreditBlocks"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CreditBlocks"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/credit-blocks/{id}": {
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CreditBlocks"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/customers": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllCustomersResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "userId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "email",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Customer"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCustomerData"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/customers/loadBy": {
+			"get": {
+				"operationId": "LoadBy",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Customer"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "userId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "email",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "documentNumber",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/customers/wallet": {
+			"get": {
+				"operationId": "LoadBalance",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"currentBalance": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"currentBalance"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/customers/signup": {
+			"post": {
+				"operationId": "Signup",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SignupCustomerResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserCustomerCreateTest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/customer-credit-transaction": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllCustomerCreditTransactionsOutput"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"today",
+								"lastWeek",
+								"lastMonth"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/customer-credit-transaction/bonus": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"amount": {
+										"type": "number",
+										"format": "double"
+									},
+									"idCustomer": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"amount",
+									"idCustomer"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/restrictions": {
+			"get": {
+				"operationId": "Load",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CustomerRestrictions"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CustomerRestrictions"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CustomerRestrictions"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CustomerRestrictions"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCustomerRestrictionsInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/restrictions/{id}": {
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CustomerRestrictions"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CustomerRestrictions"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateCustomerRestrictionsInput"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Delete",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"CustomerRestrictions"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/financial-transactions/payment-methods": {
+			"get": {
+				"operationId": "LoadAllPaymentMethods",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllPaymentMethodsOutput"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreatePaymentMethod",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateFinancialTransactionPaymentMethodOutput"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateFinancialTransactionPaymentMethodInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/financial-transactions": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"financialTransaction": {
+											"$ref": "#/components/schemas/FinancialTransaction"
+										},
+										"currentBalance": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"financialTransaction",
+										"currentBalance"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCreditTransactionInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/financial-transactions/checkout": {
+			"post": {
+				"operationId": "OneStepCheckout",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateCheckoutFinancialTransactionOutput"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCheckoutTransactionInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/password/forgot-password": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Password"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ForgotPasswordCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/password/reset-password": {
+			"post": {
+				"operationId": "ChangePassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Password"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ForgotPasswordUpdate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/games": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllGameResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Game"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "number",
+								"format": "double"
+							}
+						}
+					},
+					{
+						"in": "query",
+						"name": "createdBy",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "number",
+								"format": "double"
+							}
+						}
+					},
+					{
+						"in": "query",
+						"name": "isActive",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"in": "query",
+						"name": "lotteryId",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "number",
+								"format": "double"
+							}
+						}
+					},
+					{
+						"in": "query",
+						"name": "prizeType",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/PrizeType"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateGameResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Game"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Game"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/games/{id}": {
+			"get": {
+				"operationId": "LoadById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Game"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Game"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/games/next-dates": {
+			"get": {
+				"operationId": "LoadNextGameDates",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadNextGameDatesResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Game"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "gameId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "amount",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/games/{id}/prices": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllGamePriceResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GamePrice"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "number",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GamePrice"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GamePrice"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GamePrice"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/games/{id}/prizes": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllGamePrizeResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GamePrize"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "number",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateGamePrizeResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GamePrize"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GamePrize"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/games/{id}/recurrences": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllGameRecurrenceResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GameRecurrence"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "number",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateGameRecurrenceResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GameRecurrence"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GameRecurrence"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/games/{id}/sharings": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllGameSharingResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GameSharing"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "number",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateGameSharingResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GameSharing"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GameSharing"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/health": {
+			"get": {
+				"operationId": "GetHealth",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"ok": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"ok"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/health/error": {
+			"get": {
+				"operationId": "GetHealthError",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/lotteries": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllLotteryResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Lottery"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "partnerId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "createdAt",
+						"required": false,
+						"schema": {
+							"type": "number",
+							"enum": [
+								15,
+								30,
+								60
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LotteryResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Lottery"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LotteryCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/lotteries/{id}": {
+			"get": {
+				"operationId": "ShowOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LotteryResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Lottery"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LotteryResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Lottery"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_LotteryCreate_"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Lottery"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/partners": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllPartnerResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Partner"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "cnpj",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "neighborhood",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "city",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "zipcode",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "uf",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PartnerResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Partner"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PartnerCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/partners/{id}": {
+			"get": {
+				"operationId": "ShowOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PartnerResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Partner"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PartnerResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Partner"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_PartnerCreate_"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Partner"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/permissions": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/PermissionResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PermissionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PermissionCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/permissions/{id}": {
+			"get": {
+				"operationId": "ShowOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PermissionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PermissionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_PermissionCreate_"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/prize-draw/{id}": {
+			"get": {
+				"operationId": "LoadById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PrizeDraw"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDraw"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PrizeDraw"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDraw"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PrizeDrawUpdate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/prize-draw": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllPrizeDrawsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDraw"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "gameVersion",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "dueDate",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"asc",
+								"desc"
+							]
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"wasDraw",
+								"notDraw"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/prize-draw/previous": {
+			"get": {
+				"operationId": "LoadPrevious",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/PrizeDraw"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDraw"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "gameVersion",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "dueDate",
+						"required": false,
+						"schema": {
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "orderBy",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"asc",
+								"desc"
+							]
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"wasDraw",
+								"notDraw"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/prize-draw/results": {
+			"get": {
+				"operationId": "LoadResults",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PrizeDrawResultsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDraw"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "gameVersion",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"today",
+								"lastWeek",
+								"lastMonth"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/prize-draw/next": {
+			"get": {
+				"operationId": "LoadNext",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PrizeDrawNextResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDraw"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "lotteryId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "prizeType",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/PrizeType"
+						}
+					}
+				]
+			}
+		},
+		"/prize-draw/drawn-numbers": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"PrizeDrawNumber"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/PrizeDrawNumberCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/roles": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/RoleResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RoleResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RoleCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/roles/{id}": {
+			"get": {
+				"operationId": "ShowOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RoleResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RoleResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_RoleCreate_"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/roles/{roleId}/permissions": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/RolePermissionResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "permissionId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "roleId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "AddRolePermission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RolePermissionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RolePermissionAdd"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/roles/{roleId}/permissions/{id}": {
+			"delete": {
+				"operationId": "RemoveRolePermission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/sessions": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SessionResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Session"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SessionCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/shops": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllShopResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Shop"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "lotteryId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "partnerId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ShopResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Shop"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ShopCreate"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/shops/{id}": {
+			"get": {
+				"operationId": "ShowOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ShopResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Shop"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ShopResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Shop"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_ShopCreate_"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Shop"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/shops/wallet": {
+			"get": {
+				"operationId": "LoadBalance",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"currentBalance": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"currentBalance"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Shop"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/shop-credit-transaction": {
+			"get": {
+				"operationId": "LoadAllBySHopId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllShopCreditTransactionsOutput"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"today",
+								"lastWeek",
+								"lastMonth"
+							]
+						}
+					}
+				]
+			}
+		},
+		"/shop-credit-transaction/bonus": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"amount": {
+										"type": "number",
+										"format": "double"
+									},
+									"idShop": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"amount",
+									"idShop"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/shop-financial-transactions": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllShopFinancialTransactionsOutput"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"today",
+								"lastWeek",
+								"lastMonth"
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"currentBalance": {
+											"type": "number",
+											"format": "double"
+										},
+										"financialTransaction": {
+											"$ref": "#/components/schemas/ShopFinancialTransaction"
+										}
+									},
+									"required": [
+										"currentBalance",
+										"financialTransaction"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateShopFinancialTransactionInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/shop-financial-transactions/payment-methods": {
+			"get": {
+				"operationId": "LoadAllPaymentMethods",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllShopPaymentMethodsOutput"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreatePaymentMethod",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateShopPaymentMethodOutput"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Financial Transaction"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateShopPaymentMethodInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/tickets": {
+			"get": {
+				"operationId": "LoadAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllTicketsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Ticket"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idGame",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "partnerId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "lotteryId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "idCustomer",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "period",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/PeriodEnum"
+						}
+					},
+					{
+						"in": "query",
+						"name": "isWinner",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"TRUE",
+								"FALSE"
+							]
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CreateTicketResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Ticket"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateTicketInput"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/tickets/my-tickets": {
+			"get": {
+				"operationId": "LoadAllByUserId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/MyTicketsList"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Ticket"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "isPrizeWinner",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": [
+								"TRUE",
+								"FALSE"
+							]
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/TicketStatusFilter"
+						}
+					}
+				]
+			}
+		},
+		"/tickets/{id}": {
+			"get": {
+				"operationId": "LoadById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadTicketBydIdResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Ticket"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/upload-file": {
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/UploadFile"
+										},
+										{
+											"properties": {
+												"file": {
+													"$ref": "#/components/schemas/File"
+												}
+											},
+											"required": [
+												"file"
+											],
+											"type": "object"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"UploadFile"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"file": {
+										"type": "string",
+										"format": "binary"
+									},
+									"idGame": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"file",
+									"idGame"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "Search",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadAllUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "name",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "roleId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "partnerId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "lotteryId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "shopId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserCreate"
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"operationId": "UpdateMe",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_UserCreate_"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/{id}": {
+			"get": {
+				"operationId": "ShowOne",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadUserByIdResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Partial_UserCreate_"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Boolean"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/users/me": {
+			"get": {
+				"operationId": "ShowMe",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoadUserByIdResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/users/password": {
+			"put": {
+				"operationId": "UpdatePassword",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserPassword"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
