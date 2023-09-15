@@ -6,6 +6,7 @@ import {
   Security,
   Tags,
 } from "tsoa";
+import { Car } from '../../domain/entities/car'
 import { CreateCar, LoadAllCar, LoadCarById } from '../../domain/usecases/cars'
 import { makeCarService } from '../../infra/factories/services/carServiceFactory'
 import { CreateCarInput } from './types'
@@ -23,7 +24,7 @@ class CarHandler {
   @Get("/")
   async loadAll() {
     const cars = await this.service.loadAll();
-    return cars
+    return cars as Car[]
   }
 
   @Get("/:id")

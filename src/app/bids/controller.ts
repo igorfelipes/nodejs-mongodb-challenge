@@ -2,6 +2,7 @@ import { CreateBid, LoadAllBids, LoadBidById } from '../../domain/usecases/bids'
 import { CreateBidInput } from './types'
 import { Body, Get, Post, Route, Security, Tags } from 'tsoa'
 import { makeBidService } from '../../infra/factories/services/bidServiceFactory'
+import { Bid } from '../../domain/entities/bids'
 
 @Tags("Bids")
 @Security("bearerAuth")
@@ -12,7 +13,7 @@ export class BidHandler {
 	@Get("/")
 	async loadAll() {
 		const bids = await this.service.loadAll();
-		return bids;
+		return bids as Bid[];
 	}
 
 	@Get("/:id")

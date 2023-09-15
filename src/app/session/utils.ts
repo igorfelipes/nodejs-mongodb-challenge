@@ -20,7 +20,7 @@ export const createNewToken = (payload: any) => {
       },
     });
   }
-  console.log("decoded.exp", decoded.exp)
+
   return {
     token,
     expireDate: decoded.exp,

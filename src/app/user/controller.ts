@@ -40,7 +40,7 @@ class UserHandler {
   @Get("/")
   async search() {
     const users = await this.service.loadAll();
-    return users as LoadAllUserResponse;
+    return users as UserResponse[];
   }
 
   @Get("/:id")
