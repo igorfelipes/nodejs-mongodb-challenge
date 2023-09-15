@@ -1,7 +1,7 @@
 import { validate, wrapper } from "../../routes/middlewares";
 import { auth } from "../../routes/middlewares/auth";
 import { Router } from "../../types/routes";
-import { idStringPathParam } from "./../../common/zod";
+import { idStringPathParam, objectIdStringPathParam } from "./../../common/zod";
 import {
   create,
   remove,
@@ -23,7 +23,7 @@ const router: Router = {
       path: "/:id",
       method: "get",
       controller: showOne,
-      middlewares: [validate({ params: idStringPathParam })],
+      middlewares: [validate({ params: objectIdStringPathParam })],
     },
     {
       path: "/",

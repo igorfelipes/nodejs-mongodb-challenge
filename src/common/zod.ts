@@ -7,6 +7,12 @@ export const lowerCaseString = stringSchema.transform((v) => v.toLowerCase());
 
 export const emailString = stringSchema.email();
 
+export const objectIdStringSchema = z.string().refine((value) => /^[0-9a-fA-F]{24}$/.test(value), {
+  message: 'is not a valid ObjectId',
+});
+
+export const objectIdStringPathParam = z.object({ id: objectIdStringSchema });
+
 export const cuid = stringSchema.cuid();
 
 // export const idStringPathParam = z.object({ id: cuid });
