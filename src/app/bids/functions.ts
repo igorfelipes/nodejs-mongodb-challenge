@@ -19,3 +19,8 @@ export const create: Controller = async (req, res) => {
 	const result = await bidHandler.create(body)
 	res.send(result)
 }
+
+export const closeAuction: Controller = async (req, res) => {
+	const result = await bidHandler.closeAuction(req.body)
+	res.send(result)
+}

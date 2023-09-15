@@ -1,4 +1,4 @@
-import { idStringPathParam, objectIdStringPathParam } from '../../common/zod'
+import { objectIdStringPathParam } from '../../common/zod'
 import { validate } from '../../routes/middlewares'
 import { Router } from '../../types/routes'
 import { create, loadAll, loadById } from './functions'
@@ -27,7 +27,7 @@ const router: Router = {
 			middlewares: [
 				validate({ body: createCarSchema }),
 			]
-		}
+		},
 	],
 }
 

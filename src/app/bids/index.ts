@@ -1,8 +1,8 @@
 import { idStringPathParam } from '../../common/zod'
 import { validate } from '../../routes/middlewares'
 import { Router } from '../../types/routes'
-import { create, loadAll, loadById } from './functions'
-import { createBidSchema, loadAllBidsQueryParamsSchema } from './schema'
+import { closeAuction, create, loadAll, loadById } from './functions'
+import { closeAuctionSchema, createBidSchema, loadAllBidsQueryParamsSchema } from './schema'
 
 const router: Router = {
 	basePath: 'bids',
@@ -30,6 +30,14 @@ const router: Router = {
 			middlewares: [
 				validate({ body: createBidSchema }),
 			]
+		},
+		{
+			path: '/close-auction',
+			method: 'post',
+			controller: closeAuction,
+			middlewares: [
+				validate({ body: closeAuctionSchema }),
+			],
 		}
 	],
 }

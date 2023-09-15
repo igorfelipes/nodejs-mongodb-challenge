@@ -10,7 +10,8 @@ export class BidMongoDBRepository implements BidRepository {
 			id: bid._id,
 			userId: bid.userId,
 			carId: bid.carId,
-			amount: bid.amount
+			amount: bid.amount,
+			user: bid.user
 		}
 	}
 
@@ -25,6 +26,14 @@ export class BidMongoDBRepository implements BidRepository {
 
 	async loadAllById(id: string): Promise<Bid | undefined> {
 		const bid = await BidsModel.findById(id)
+		return bid ? this.adaptToDomain(bid) : undefined
+	}
+
+	async loadBest(carId: string): Promise<Bid | undefined> {
+		const bid = await BidsModel.findOne({ carId })
+		.sort({ amount: -1 })
+		.populate('userId');
+		
 		return bid ? this.adaptToDomain(bid) : undefined
 	}
 

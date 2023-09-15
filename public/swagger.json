@@ -6,6 +6,28 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"User": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Bid": {
 				"properties": {
 					"id": {
@@ -20,6 +42,9 @@
 					"amount": {
 						"type": "number",
 						"format": "double"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
 					}
 				},
 				"required": [
@@ -50,6 +75,9 @@
 					"amount": {
 						"type": "number",
 						"format": "double"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
 					}
 				},
 				"required": [
@@ -66,6 +94,17 @@
 			},
 			"CreateBidInput": {
 				"$ref": "#/components/schemas/Omit_Bid.id_"
+			},
+			"CloseAuctionInput": {
+				"properties": {
+					"carId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"carId"
+				],
+				"type": "object"
 			},
 			"Car": {
 				"properties": {
@@ -367,6 +406,40 @@
 						}
 					}
 				]
+			}
+		},
+		"/bids/close-auction": {
+			"post": {
+				"operationId": "CloseAuction",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Bids"
+				],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CloseAuctionInput"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/cars": {

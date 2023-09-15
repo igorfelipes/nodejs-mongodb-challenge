@@ -10,3 +10,7 @@ export const createBidSchema = z.object({
 export const loadAllBidsQueryParamsSchema = z.object({
 	carId: objectIdStringSchema.optional()
 })
+
+export const closeAuctionSchema = z.object({
+	carId: objectIdStringSchema,
+})

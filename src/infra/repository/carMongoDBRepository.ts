@@ -31,4 +31,12 @@ export class CarMongoRepository implements CarRepository {
 		return this.adaptToDomain(car)
 	}
 
+	async update(id: string, data: Partial<Car>) {
+		const car = await CarModel.findByIdAndUpdate(id,
+			data,
+			{ returnDocument: 'after' }
+		)
+		return this.adaptToDomain(car)
+	}
+
 }

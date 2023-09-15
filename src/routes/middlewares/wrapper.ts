@@ -9,7 +9,6 @@ export const wrapper =
         return next();
       } else {
         const controllerResponse = await fn(req, res, next);
-        console.log(controllerResponse);
         return controllerResponse
         // return res.json(controllerResponse);
       }

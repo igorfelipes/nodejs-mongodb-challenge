@@ -1,6 +1,7 @@
 import {
   Body,
   Get,
+  Patch,
   Post,
   Route,
   Security,
@@ -18,7 +19,7 @@ import { CreateCarInput } from './types'
 @Route("cars")
 class CarHandler {
   constructor(
-    private readonly service: LoadAllCar & LoadCarById & CreateCar
+    private readonly service: LoadAllCar & LoadCarById & CreateCar 
   ) {}
 
   @Get("/")

@@ -1,4 +1,4 @@
-import { CreateBidInput, CreateBidResponse, LoadAllBidsResponse, LoadAllBidsSearchParams } from '../../app/bids/types'
+import { CloseAuctionInput, CloseAuctionResponse, CreateBidInput, CreateBidResponse, LoadAllBidsResponse, LoadAllBidsSearchParams } from '../../app/bids/types'
 import { Bid } from '../entities/bids'
 
 export interface LoadAllBids {
@@ -11,4 +11,8 @@ export interface LoadBidById {
 
 export interface CreateBid {
 	create: (data: CreateBidInput) => Promise<CreateBidResponse>
+}
+
+export interface CloseAuction {
+	closeAuction: (data: CloseAuctionInput) => Promise<CloseAuctionResponse>;
 }

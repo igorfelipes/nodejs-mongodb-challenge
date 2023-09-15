@@ -84,4 +84,25 @@ export class ErrorCode {
     }),
   }
 
+  public static CLOSE_AUCTION = {
+    CAR_NOT_FOUND: new BusinessError({
+      code: "UC-CLOSE-AUCTION-CAR-0001",
+      message: `Carro não encontrado`,
+      details: {},
+    }),
+    BID_NOT_FOUND: new BusinessError({
+      code: "UC-CLOSE-AUCTION-CAR-0002",
+      message: `Lance não encontrado`,
+      details: {
+        reference: "amount",
+        detail: "O carro não possui lances",
+      },
+    }),
+    AUCTION_ALREADY_CLOSED: new BusinessError({
+      code: "UC-CLOSE-AUCTION-CAR-0003",
+      message: `Leilão já está fechado`,
+      details: {},
+    })
+  }
+
 }

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { Permissions } from "../constants/Permissions";
 import { Role } from "../constants/Roles";
 
-type Method = "get" | "post" | "put" | "delete";
+type Method = "get" | "post" | "put" | "delete" | "patch";
 
 type Return =
   | { [key: string]: any; meta?: { page: number; limit: number; search?: any } }

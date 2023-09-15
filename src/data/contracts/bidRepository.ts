@@ -5,4 +5,5 @@ export interface BidRepository {
 	loadAll: (query?: LoadAllBidsSearchParams) => Promise<Bid[] | []>
 	loadAllById: (id: string) => Promise<Bid | undefined>
 	create: (data: Omit<Bid, 'id'>) => Promise<Bid | null>
+	loadBest: (carId: string) => Promise<Bid | undefined>
 }

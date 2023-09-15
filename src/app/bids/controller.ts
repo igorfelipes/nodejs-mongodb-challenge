@@ -1,5 +1,5 @@
-import { CreateBid, LoadAllBids, LoadBidById } from '../../domain/usecases/bids'
-import { CreateBidInput, LoadAllBidsSearchParams } from './types'
+import { CloseAuction, CreateBid, LoadAllBids, LoadBidById } from '../../domain/usecases/bids'
+import { CloseAuctionInput, CreateBidInput, LoadAllBidsSearchParams } from './types'
 import { Body, Get, Post, Queries, Route, Security, Tags } from 'tsoa'
 import { makeBidService } from '../../infra/factories/services/bidServiceFactory'
 import { Bid } from '../../domain/entities/bids'
@@ -8,7 +8,7 @@ import { Bid } from '../../domain/entities/bids'
 @Security("bearerAuth")
 @Route("bids")
 export class BidHandler {
-	constructor(private readonly service: LoadAllBids & LoadBidById & CreateBid) {}
+	constructor(private readonly service: LoadAllBids & LoadBidById & CreateBid & CloseAuction) {}
 		
 	@Get("/")
 	async loadAll( @Queries() query: LoadAllBidsSearchParams) {
@@ -25,6 +25,12 @@ export class BidHandler {
 	async create(@Body() data: CreateBidInput) {
 			return await this.service.create(data);
 	}
+
+	@Post("/close-auction")
+  async closeAuction(@Body() data: CloseAuctionInput) {
+    return await this.service.closeAuction(data);
+  }
+
 }
 
 const service = makeBidService()
