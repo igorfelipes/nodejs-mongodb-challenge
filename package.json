@@ -6,7 +6,6 @@
 	"author": "Igor Sales<igorsales.fs@gmail.com>",
 	"scripts": {
 		"start:dev": "ts-node-dev --respawn --transpile-only --exit-child src/server.ts",
-		"start:dev:swagger": "ts-node-dev --respawn --transpile-only --exit-child src/server-swagger.ts",
 		"start:test": "ts-node-dev test/test.ts",
 		"start": "node dist/src/server.js",
 		"swagger:generate": "tsoa spec",
