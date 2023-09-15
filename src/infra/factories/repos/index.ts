@@ -1,3 +1,4 @@
+import { BidMongoDBRepository } from '../../repository/bidMongoDBReepository'
 import { CarMongoRepository } from '../../repository/carMongoDBRepository'
 import { SessionMongoRepository } from '../../repository/sessionMongoDBRespository'
 import { UserMongoDBRepository } from '../../repository/userMongoDBRepository'
@@ -10,3 +11,6 @@ export const makeCarMongoDBRepository = (): CarMongoRepository =>
 
 export const makeSessionMongoDBRepository = (): SessionMongoRepository => 
   new SessionMongoRepository();
+
+export const makeBidMongoDBRepository = (): BidMongoDBRepository =>
+  new BidMongoDBRepository();

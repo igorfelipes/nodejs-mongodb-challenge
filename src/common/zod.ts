@@ -70,6 +70,13 @@ export const integerNumberSchema = stringSchema
 
 export const idNumberPathParam = z.object({ id: numberSchema });
 
+export const monetaryValueInCentsSchema = z
+.number()
+.int()
+.min(0, "O valor monetário em centavos não pode ser negativo.")
+.transform((val) => Math.round(val)); 
+
+
 // Complex types
 export const simpleOrArray = <T>(o: ZodSchema<T>) => o.or(z.array(o));
 
