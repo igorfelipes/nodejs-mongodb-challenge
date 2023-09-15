@@ -65,11 +65,13 @@ export class UserService
 
   async loadByEmail(email: string): Promise<UserResponse | undefined> {
     const user = await this.repository.loadByEmail(email);
+    if (!user) throw ErrorCode.USER.NOT_FOUND("user.update");
+    delete user.password;
     return user;
   }
 
   async authenticate(email: string, password: string): Promise<UserResponse> {
-    const user = await this.repository.authenticate(email, password);
+    const user = await this.repository.loadByEmail(email);
     if (!user) throw ErrorCode.USER.INVALID_EMAIL_OR_PASSWORD;
     if (!comparePasswordHash(password, user.password!))
       throw ErrorCode.USER.INVALID_EMAIL_OR_PASSWORD;

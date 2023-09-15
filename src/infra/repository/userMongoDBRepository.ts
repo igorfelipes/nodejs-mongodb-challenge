@@ -17,7 +17,8 @@ export class UserMongoDBRepository implements UserRepository {
 	}
 
 	async loadById(id: string): Promise<LoadUserByIdResponse | undefined> {
-		return undefined
+		const user = await UserModel.findById(id)
+		return user ? this.adaptToDomain(user) : undefined
 	}
 
 	async loadByEmail(email: string): Promise<User | undefined> {
@@ -41,7 +42,7 @@ export class UserMongoDBRepository implements UserRepository {
 		return true
 	}
 
-	async authenticate(email: string, password: string): Promise<User | undefined> {
+	async authenticate(email: string): Promise<User | undefined> {
 		return undefined
 	}
 
