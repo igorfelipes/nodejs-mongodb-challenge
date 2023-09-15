@@ -1,6 +1,6 @@
 import { Bid } from '../../domain/entities/bids'
 
-export type LoadAllBidsSearchParams = {
+export interface LoadAllBidsSearchParams {
 	carId?: string
 }
 export type LoadAllBidsResponse = Bid[] | []

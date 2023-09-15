@@ -30,6 +30,15 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"LoadAllBidsSearchParams": {
+				"properties": {
+					"carId": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
 			"Pick_Bid.Exclude_keyofBid.id__": {
 				"properties": {
 					"userId": {
@@ -279,7 +288,16 @@
 						"bearerAuth": []
 					}
 				],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "query",
+						"name": "carId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			},
 			"post": {
 				"operationId": "Create",
