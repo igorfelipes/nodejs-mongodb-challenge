@@ -1,6 +1,6 @@
 import { CreateBid, LoadAllBids, LoadBidById } from '../../domain/usecases/bids'
-import { CreateBidInput } from './types'
-import { Body, Get, Post, Route, Security, Tags } from 'tsoa'
+import { CreateBidInput, LoadAllBidsSearchParams } from './types'
+import { Body, Get, Post, Queries, Route, Security, Tags } from 'tsoa'
 import { makeBidService } from '../../infra/factories/services/bidServiceFactory'
 import { Bid } from '../../domain/entities/bids'
 
@@ -11,8 +11,8 @@ export class BidHandler {
 	constructor(private readonly service: LoadAllBids & LoadBidById & CreateBid) {}
 		
 	@Get("/")
-	async loadAll() {
-		const bids = await this.service.loadAll();
+	async loadAll( @Queries() query: LoadAllBidsSearchParams) {
+		const bids = await this.service.loadAll(query);
 		return bids as Bid[];
 	}
 

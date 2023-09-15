@@ -1,8 +1,10 @@
 import { Controller } from '../../types/routes'
 import bidHandler from './controller';
+import { LoadAllBidsSearchParams } from './types'
 
 export const loadAll: Controller = async (req, res) => {
-	const result = await bidHandler.loadAll()
+	const query = req.query as unknown as LoadAllBidsSearchParams
+	const result = await bidHandler.loadAll(query)
 	res.send(result)
 }
 

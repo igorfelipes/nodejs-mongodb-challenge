@@ -1,3 +1,4 @@
+import { LoadAllBidsSearchParams } from '../../app/bids/types'
 import { BidRepository } from '../../data/contracts/bidRepository'
 import { Bid } from '../../domain/entities/bids'
 import { BidsModel, BidsSchema } from '../models/bids'
@@ -13,8 +14,12 @@ export class BidMongoDBRepository implements BidRepository {
 		}
 	}
 
-	async loadAll(): Promise<Bid[] | []>{
-		const bids = await BidsModel.find()
+	async loadAll(query?: LoadAllBidsSearchParams): Promise<Bid[] | []>{
+		let queryFormatted: any = {}
+
+		if(query?.carId) queryFormatted.carId= query.carId
+
+		const bids = await BidsModel.find(queryFormatted)
 		return bids ? bids.map(this.adaptToDomain) : []
 	}
 

@@ -2,7 +2,7 @@ import { idStringPathParam } from '../../common/zod'
 import { validate } from '../../routes/middlewares'
 import { Router } from '../../types/routes'
 import { create, loadAll, loadById } from './functions'
-import { createBidSchema } from './schema'
+import { createBidSchema, loadAllBidsQueryParamsSchema } from './schema'
 
 const router: Router = {
 	basePath: 'bids',
@@ -11,6 +11,9 @@ const router: Router = {
 			path: '/',
 			method: 'get',
 			controller: loadAll,
+			middlewares: [
+				validate({ query: loadAllBidsQueryParamsSchema})
+			]
 		},
 		{
 			path: '/:id',

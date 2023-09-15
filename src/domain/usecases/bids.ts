@@ -1,8 +1,8 @@
-import { CreateBidInput, CreateBidResponse, LoadAllBidsResponse } from '../../app/bids/types'
+import { CreateBidInput, CreateBidResponse, LoadAllBidsResponse, LoadAllBidsSearchParams } from '../../app/bids/types'
 import { Bid } from '../entities/bids'
 
 export interface LoadAllBids {
-	loadAll: () => Promise<LoadAllBidsResponse>
+	loadAll: (data?: LoadAllBidsSearchParams) => Promise<LoadAllBidsResponse>
 }
 
 export interface LoadBidById {

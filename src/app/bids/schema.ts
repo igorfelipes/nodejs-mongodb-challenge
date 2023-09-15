@@ -1,8 +1,12 @@
 import { z } from 'zod'
-import { monetaryValueInCentsSchema, stringSchema } from '../../common/zod'
+import { monetaryValueInCentsSchema, objectIdStringSchema, stringSchema } from '../../common/zod'
 
 export const createBidSchema = z.object({
-	carId: stringSchema,
-	userId: stringSchema,
+	carId: objectIdStringSchema,
+	userId: objectIdStringSchema,
 	amount: monetaryValueInCentsSchema,
+})
+
+export const loadAllBidsQueryParamsSchema = z.object({
+	carId: objectIdStringSchema.optional()
 })

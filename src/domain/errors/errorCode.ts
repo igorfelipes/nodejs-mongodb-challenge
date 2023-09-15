@@ -63,4 +63,25 @@ export class ErrorCode {
       }),
   };
 
+  public static CREATE_BID = {
+    CAR_NOT_FOUND: new BusinessError({
+      code: "UC-BID-CREATE-0001",
+      message: `Carro não encontrado`,
+      details: {},
+    }),
+    USER_NOT_FOUND: new BusinessError({
+      code: "UC-BID-CREATE-0002",
+      message: `Usuário não encontrado`,
+      details: {},
+    }),
+    INVALID_AMOUNT: new BusinessError({
+      code: "UC-BID-CREATE-0003",
+      message: `Valor inválido`,
+      details: {
+        reference: "amount",
+        detail: "O valor deve ser maior que o valor inicial do carro",
+      },
+    }),
+  }
+
 }
